@@ -110,6 +110,42 @@
       button.secondary:hover {
         background: #545b62;
       }
+
+      .terminal {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono",
+          monospace;
+        font-size: 13px;
+        padding: 15px;
+        border-radius: 4px;
+        height: 200px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        border: 1px solid #333;
+      }
+
+      .terminal .timestamp {
+        color: #858585;
+      }
+
+      .terminal .error {
+        color: #f85149;
+      }
+
+      .terminal .success {
+        color: #56d364;
+      }
+
+      .terminal .info {
+        color: #79c0ff;
+      }
+
+      .right-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
     </style>
   </head>
   <body>
