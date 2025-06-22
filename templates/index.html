@@ -292,6 +292,30 @@
           opacity: 1;
         }
       }
+
+      @media (max-width: 1024px) {
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .metrics-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .controls {
+          flex-direction: column;
+        }
+
+        button {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
