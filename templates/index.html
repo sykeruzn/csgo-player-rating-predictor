@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Regression CS:GO Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>CSGO Rating Prediction Model</h1>
+      <p class="subtitle">
+        Linear regression implementation for predicting player rating from ADR
+        statistics
+      </p>
+    </div>
+
+    <div class="main-content">
+      <div class="left-panel">
+        <div class="section">
+          <div class="section-header">Dataset & Training</div>
+          <div class="section-content">
+            <div class="data-info">
+              <strong>Dataset:</strong>
+              <span id="datasetStatus">Not loaded</span><br />
+              <strong>Samples:</strong> <span id="sampleCount">0</span> |
+              <strong>Features:</strong> ADR → Rating
+            </div>
+
+            <div class="controls">
+              <button onclick="loadData()">Load Data</button>
+              <button onclick="trainModel()" id="trainBtn" disabled>
+                Train Model
+              </button>
+              <button onclick="resetModel()" class="secondary">Reset</button>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <div class="terminal" id="console"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">Visualization</div>
+          <div class="section-content">
+            <div class="chart-container">
+              <canvas id="chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="section">
+          <div class="section-header">
+            <span class="status-indicator idle" id="statusIndicator"></span>
+            Model Status
+          </div>
+          <div class="section-content">
+            <div class="metrics-grid">
+              <div class="metric">
+                <div class="metric-value" id="errorMetric">-</div>
+                <div class="metric-label">Final Error</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="iterationsMetric">-</div>
+                <div class="metric-label">Iterations</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="slopeMetric">-</div>
+                <div class="metric-label">Slope (θ₁)</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="interceptMetric">-</div>
+                <div class="metric-label">Intercept (θ₀)</div>
+              </div>
+            </div>
+
+            <div class="equation" id="equation">Model not trained</div>
+          </div>
+        </div>
+
+        <div class="prediction-section">
+          <h3 style="margin: 0 0 15px 0; font-size: 16px">Make Prediction</h3>
+
+          <div class="input-group">
+            <label for="adrInput">Average Damage per Round</label>
+            <input
+              type="number"
+              id="adrInput"
+              placeholder="Enter ADR value (e.g., 75.2)"
+              step="0.1"
+            />
+          </div>
+
+          <button
+            onclick="predict()"
+            id="predictBtn"
+            disabled
+            style="width: 100%"
+          >
+            Predict Rating
+          </button>
+
+          <div class="prediction-result" id="predictionResult"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
