@@ -8,7 +8,7 @@ class LinearRegressionModel:
     def dof(self, a, b):
         return np.dot(a,b)
     
-    def run_gradient_descent(self, X, y, alpha=0.0000000001, iterations=5000):
+    def run_gradient_descent(self, X, y, alpha=0.0001, iterations=1000000):
         n = len(y)
         self.theta = np.array([0.0, 0.0])
         for _ in range(iterations):
